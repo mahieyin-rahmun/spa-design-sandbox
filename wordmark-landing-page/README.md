@@ -5,6 +5,18 @@ Tech stack:
 - TypeScript
 - Material UI
 
+
+### Screenshots
+
+#### Large Screens
+![alt text](./readme_images/desktop.png "Logo Title Text 1")
+
+#### Medium-sized screens
+![alt text](./readme_images/medium_screen.png "Logo Title Text 1")
+
+#### Mobile
+![alt text](./readme_images/mobile.png "Logo Title Text 1")
+
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
