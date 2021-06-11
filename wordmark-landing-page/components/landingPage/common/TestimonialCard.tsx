@@ -9,58 +9,61 @@ const testimonialBackground = "#e0e0e0";
 const testimonialBoxShadowColor = "#d5d5d5";
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
-const useStyles = makeStyles((theme: Theme) => {
-  return createStyles({
-    avatar: {
-      display: "block",
-      width: "5em",
-      height: "5em",
-      margin: "0 auto",
-      position: "absolute",
-      left: "50%",
-      top: "-2em",
-      marginLeft: "-2.5em",
-      background: testimonialBackground,
-    },
-    testimonial: {
-      padding: "1em 4em",
-      background: testimonialBackground,
-      borderRadius: "2em",
-      paddingTop: "5em",
-      boxShadow: `1em 0.5em 1em ${testimonialBoxShadowColor}`,
-    },
-    testimonialText: {
-      fontSize: "1.3em",
-      "&:before": {
-        content: "'\"'",
-        fontFamily: "Times New Roman",
-        fontSize: "2em",
-        marginRight: "0.25em",
+const useStyles = makeStyles(
+  (theme: Theme) => {
+    return createStyles({
+      avatar: {
+        display: "block",
+        width: "5em",
+        height: "5em",
+        margin: "0 auto",
+        position: "absolute",
+        left: "50%",
+        top: "-2em",
+        marginLeft: "-2.5em",
+        background: testimonialBackground,
       },
-      "&:after": {
-        content: "'\"'",
-        fontFamily: "Times New Roman",
-        fontSize: "2em",
-        marginLeft: "0.25em",
+      testimonial: {
+        padding: "1em 4em",
+        background: testimonialBackground,
+        borderRadius: "2em",
+        paddingTop: "5em",
+        boxShadow: `1em 0.5em 1em ${testimonialBoxShadowColor}`,
       },
-    },
-    testimonialAuthor: {
-      textTransform: "uppercase",
-      fontStyle: "italic",
-      "&:before": {
-        content: "'-'",
-        marginRight: "1em",
+      testimonialText: {
+        fontSize: "1.3em",
+        "&:before": {
+          content: "'\"'",
+          fontFamily: "Times New Roman",
+          fontSize: "2em",
+          marginRight: "0.25em",
+        },
+        "&:after": {
+          content: "'\"'",
+          fontFamily: "Times New Roman",
+          fontSize: "2em",
+          marginLeft: "0.25em",
+        },
       },
-    },
-    root: {
-      position: "relative",
-      margin: "6em 0",
-      "&:last-child": {
-        marginBottom: 0,
+      testimonialAuthor: {
+        textTransform: "uppercase",
+        fontStyle: "italic",
+        "&:before": {
+          content: "'-'",
+          marginRight: "1em",
+        },
       },
-    },
-  });
-});
+      root: {
+        position: "relative",
+        margin: "6em 0",
+        "&:last-child": {
+          marginBottom: 0,
+        },
+      },
+    });
+  },
+  { index: 1 },
+);
 
 function TestimonialCard() {
   const classes = useStyles();

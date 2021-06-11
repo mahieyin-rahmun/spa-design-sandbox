@@ -1,6 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
 import type { AppProps } from "next/app";
+import React from "react";
 import Layout from "../components/layout/Layout";
 import { globalLightTheme } from "../styles/globals.styles";
 

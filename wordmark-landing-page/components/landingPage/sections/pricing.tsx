@@ -41,20 +41,23 @@ const pricing: TPricingCardProps[] = [
 ];
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
-const useStyles = makeStyles((theme: Theme) => {
-  return createStyles({
-    root: {
-      borderTop: `2px solid ${theme.palette.primary.main}`,
-      borderBottom: `2px solid ${theme.palette.primary.main}`,
-      padding: "5em 2em",
-    },
-    sectionTitle: {
-      textTransform: "uppercase",
-      letterSpacing: "0.2em",
-      marginBottom: "1em",
-    },
-  });
-});
+const useStyles = makeStyles(
+  (theme: Theme) => {
+    return createStyles({
+      root: {
+        borderTop: `2px solid ${theme.palette.primary.main}`,
+        borderBottom: `2px solid ${theme.palette.primary.main}`,
+        padding: "5em 2em",
+      },
+      sectionTitle: {
+        textTransform: "uppercase",
+        letterSpacing: "0.2em",
+        marginBottom: "1em",
+      },
+    });
+  },
+  { index: 1 },
+);
 
 function Pricing() {
   const classes = useStyles();

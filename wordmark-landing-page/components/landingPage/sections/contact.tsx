@@ -9,42 +9,45 @@ import {
 import React from "react";
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
 
-const useStyles = makeStyles((theme: Theme) => {
-  return createStyles({
-    root: {
-      padding: "10em 2em",
-      background: theme.palette.primary.dark,
-    },
-    sectionTitle: {
-      color: "#fff",
-      fontWeight: "bold",
-      textTransform: "uppercase",
-      letterSpacing: "0.2em",
-      marginTop: "-2em",
-      marginBottom: "2em",
-    },
-    form: {
-      padding: "2em",
-    },
-    input: {
-      display: "block",
-      margin: "1em auto",
-    },
-    iframe: {
-      marginTop: theme.spacing(4),
-      display: "block",
-      border: "0",
-      width: "100%",
-      height: "500px",
-      [theme.breakpoints.up("md")]: {
-        width: "100%",
+const useStyles = makeStyles(
+  (theme: Theme) => {
+    return createStyles({
+      root: {
+        padding: "10em 2em",
+        background: theme.palette.primary.dark,
       },
-    },
-    secondaryText: {
-      color: "#fff",
-    },
-  });
-});
+      sectionTitle: {
+        color: "#fff",
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        letterSpacing: "0.2em",
+        marginTop: "-2em",
+        marginBottom: "2em",
+      },
+      form: {
+        padding: "2em",
+      },
+      input: {
+        display: "block",
+        margin: "1em auto",
+      },
+      iframe: {
+        marginTop: theme.spacing(4),
+        display: "block",
+        border: "0",
+        width: "100%",
+        height: "500px",
+        [theme.breakpoints.up("md")]: {
+          width: "100%",
+        },
+      },
+      secondaryText: {
+        color: "#fff",
+      },
+    });
+  },
+  { index: 1 },
+);
 
 function ContactUs() {
   const classes = useStyles();

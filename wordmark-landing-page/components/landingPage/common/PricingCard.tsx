@@ -11,43 +11,46 @@ import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { FaHandPointRight } from "react-icons/fa";
 import { TPricingCardProps } from "../../../types";
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    maxWidth: 345,
-    position: "relative",
-    display: "block",
-    margin: "3em auto",
-    boxShadow: `1em 1em 1em #c5c5c5`,
+const useStyles = makeStyles(
+  (theme: Theme) => ({
+    root: {
+      maxWidth: 345,
+      position: "relative",
+      display: "block",
+      margin: "3em auto",
+      boxShadow: `1em 1em 1em #c5c5c5`,
 
-    [theme.breakpoints.up("lg")]: {
-      "&:hover": {
-        transform: "scale(1.2)",
-        transition: "transform 1s",
+      [theme.breakpoints.up("lg")]: {
+        "&:hover": {
+          transform: "scale(1.2)",
+          transition: "transform 1s",
+        },
       },
     },
-  },
-  media: {
-    height: 140,
-  },
-  tierAndPrice: {
-    position: "absolute",
-    top: "7.5%",
-    marginLeft: "-1.1em",
-    width: "100%",
-  },
-  tierAndPriceText: {
-    color: "#eee",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-  },
-  tierBenifits: {
-    margin: "3.5em 0 0 0",
-  },
-  purchaseButton: {
-    display: "block",
-    margin: "0 auto 1em auto",
-  },
-}));
+    media: {
+      height: 140,
+    },
+    tierAndPrice: {
+      position: "absolute",
+      top: "7.5%",
+      marginLeft: "-1.1em",
+      width: "100%",
+    },
+    tierAndPriceText: {
+      color: "#eee",
+      fontWeight: "bold",
+      textTransform: "uppercase",
+    },
+    tierBenifits: {
+      margin: "3.5em 0 0 0",
+    },
+    purchaseButton: {
+      display: "block",
+      margin: "0 auto 1em auto",
+    },
+  }),
+  { index: 1 },
+);
 
 const PricingCard: React.FC<TPricingCardProps> = ({
   tierName,
