@@ -2,7 +2,7 @@ import React from "react";
 import { TPricingCardProps } from "../../../types";
 import PricingCard from "../common/PricingCard";
 import { v4 as uuid4 } from "uuid";
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 
 const pricing: TPricingCardProps[] = [
   {
@@ -70,14 +70,31 @@ function Pricing() {
       >
         Pricing
       </Typography>
-      {pricing.map(({ tierName, tierPrice, tierBenefits }) => (
-        <PricingCard
-          tierName={tierName}
-          tierBenefits={tierBenefits}
-          tierPrice={tierPrice}
-          key={uuid4()}
-        />
-      ))}
+      <Typography
+        variant="h6"
+        align="center"
+        gutterBottom
+        paragraph
+        color="textSecondary"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et,
+        excepturi quidem exercitationem aspernatur voluptatibus dolorum
+        perferendis ullam suscipit quos explicabo illo ratione quae hic
+        recusandae sequi minima sapiente, nostrum eligendi, consequatur ipsum
+        ad? Tempora, quo! Possimus laboriosam provident non temporibus. Labore
+        vitae reiciendis, dignissimos numquam quis voluptatem unde hic.
+      </Typography>
+      <Grid container spacing={1} alignItems="center" justify="center">
+        {pricing.map(({ tierName, tierPrice, tierBenefits }) => (
+          <Grid item xs={12} sm={6} md={4} key={uuid4()}>
+            <PricingCard
+              tierName={tierName}
+              tierBenefits={tierBenefits}
+              tierPrice={tierPrice}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </section>
   );
 }

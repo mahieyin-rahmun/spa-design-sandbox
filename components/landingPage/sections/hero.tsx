@@ -7,13 +7,26 @@ const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     hero: {
       padding: "8em 2em",
+      [theme.breakpoints.up("md")]: {
+        padding: "18em 8em",
+      },
+      [theme.breakpoints.up("lg")]: {
+        display: "flex",
+        alignItems: "center",
+      },
     },
     secondaryTitle: {
       textTransform: "uppercase",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "2em",
+      },
     },
     primaryTitle: {
       fontWeight: "bold",
       marginBottom: "2em",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "3em",
+      },
     },
     getStartedButton: {
       background: theme.palette.primary.main,
@@ -23,22 +36,40 @@ const useStyles = makeStyles((theme: Theme) => {
       fontSize: "2.5em",
       borderRadius: "5em",
       marginBottom: theme.spacing(4),
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "1.7em",
+        display: "block",
+      },
     },
     watchDemoButton: {
       fontWeight: "bold",
       fontSize: "2em",
       borderRadius: "5em",
       padding: "0.25em 1em",
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "1.7em",
+      },
     },
     videoIcon: {
       fontSize: "1.2em",
       marginRight: theme.spacing(2),
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "1.7em",
+      },
     },
     cta: {
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
+      [theme.breakpoints.up("lg")]: {
+        marginTop: "-3em",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        width: "100%",
+        alignItems: "center",
+      },
     },
   });
 });

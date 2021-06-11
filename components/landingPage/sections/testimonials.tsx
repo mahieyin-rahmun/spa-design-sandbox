@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import React from "react";
 import TestimonialCard from "../common/TestimonialCard";
 import { v4 as uuid4 } from "uuid";
@@ -32,11 +32,36 @@ function Testimonials() {
       >
         Our Satisfied Customers
       </Typography>
-      <div>
+      <Typography
+        variant="h6"
+        align="center"
+        gutterBottom
+        paragraph
+        color="textSecondary"
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et,
+        excepturi quidem exercitationem aspernatur voluptatibus dolorum
+        perferendis ullam suscipit quos explicabo illo ratione quae hic
+        recusandae sequi minima sapiente, nostrum eligendi, consequatur ipsum
+        ad? Tempora, quo! Possimus laboriosam provident non temporibus. Labore
+        vitae reiciendis, dignissimos numquam quis voluptatem unde hic.
+      </Typography>
+      <Grid container spacing={6} justify="center">
         {[...Array(4).keys()].map((_) => (
-          <TestimonialCard key={uuid4()} />
+          <Grid
+            container
+            item
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            justify="center"
+            key={uuid4()}
+          >
+            <TestimonialCard />
+          </Grid>
         ))}
-      </div>
+      </Grid>
     </section>
   );
 }

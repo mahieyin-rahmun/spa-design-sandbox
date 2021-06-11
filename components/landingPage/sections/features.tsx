@@ -1,4 +1,5 @@
 import {
+  Grid,
   List,
   ListItem,
   ListItemIcon,
@@ -22,10 +23,6 @@ const useStyles = makeStyles((theme: Theme) => {
       textTransform: "uppercase",
       letterSpacing: "0.2em",
     },
-    featuresList: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(15em, 1fr))",
-    },
     features: {
       display: "block",
       marginLeft: 0,
@@ -39,6 +36,9 @@ const useStyles = makeStyles((theme: Theme) => {
       color: "white",
       border: "1px solid white",
       borderRadius: "50%",
+    },
+    secondaryText: {
+      color: "#fff",
     },
   });
 });
@@ -57,17 +57,36 @@ function Features() {
       >
         What We Offer
       </Typography>
-      <List className={classes.featuresList}>
-        {[...Array(6).keys()].map((_) => (
-          <ListItem key={uuid4()}>
-            <ListItemIcon>
-              <TiTickOutline className={classes.icon} size="2em" />
-            </ListItemIcon>
-            <ListItemText className={classes.features}>
-              Lorem ipsum dolor sit amet.
-            </ListItemText>
-          </ListItem>
-        ))}
+      <Typography
+        variant="h6"
+        align="center"
+        gutterBottom
+        paragraph
+        color="textSecondary"
+        className={classes.secondaryText}
+      >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et,
+        excepturi quidem exercitationem aspernatur voluptatibus dolorum
+        perferendis ullam suscipit quos explicabo illo ratione quae hic
+        recusandae sequi minima sapiente, nostrum eligendi, consequatur ipsum
+        ad? Tempora, quo! Possimus laboriosam provident non temporibus. Labore
+        vitae reiciendis, dignissimos numquam quis voluptatem unde hic.
+      </Typography>
+      <List>
+        <Grid container spacing={4} alignItems="center" justify="center">
+          {[...Array(6).keys()].map((_) => (
+            <Grid item key={uuid4()}>
+              <ListItem>
+                <ListItemIcon>
+                  <TiTickOutline className={classes.icon} size="2em" />
+                </ListItemIcon>
+                <ListItemText className={classes.features}>
+                  Lorem ipsum dolor sit amet.
+                </ListItemText>
+              </ListItem>
+            </Grid>
+          ))}
+        </Grid>
       </List>
     </section>
   );
