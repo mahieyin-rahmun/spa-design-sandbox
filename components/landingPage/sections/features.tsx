@@ -47,7 +47,7 @@ function Features() {
   const classes = useStyles();
 
   return (
-    <section className={classes.root}>
+    <section className={classes.root} id="features">
       <Typography
         variant="h4"
         align="center"

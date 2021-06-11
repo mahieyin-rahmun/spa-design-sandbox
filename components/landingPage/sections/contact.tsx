@@ -50,7 +50,7 @@ function ContactUs() {
   const classes = useStyles();
 
   return (
-    <section className={classes.root}>
+    <section className={classes.root} id="contact">
       <Typography
         align="center"
         variant="h4"

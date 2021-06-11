@@ -46,6 +46,11 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <style jsx global>{`
+            body: {
+              scroll-behavior: smooth;
+            }
+          `}</style>
         </body>
       </Html>
     );

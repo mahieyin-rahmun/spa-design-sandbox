@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Static Page</title>
+        <title>WoodMark &tm;</title>
         <meta name="description" content="A static website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

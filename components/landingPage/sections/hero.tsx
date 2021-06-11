@@ -78,7 +78,7 @@ function Hero() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.hero}>
+    <Container className={classes.hero} id="home">
       <div>
         <Typography
           variant="h6"

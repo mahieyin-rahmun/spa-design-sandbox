@@ -18,19 +18,19 @@ import Logo from "./common/Logo";
 const navMenu = [
   {
     label: "Home",
-    link: "#",
+    link: "#home",
   },
   {
     label: "Features",
-    link: "#",
+    link: "#features",
   },
   {
     label: "Pricing",
-    link: "#",
+    link: "#pricing",
   },
   {
     label: "Contact Us",
-    link: "#",
+    link: "#contact",
   },
 ];
 
@@ -53,7 +53,7 @@ const NavLinksDrawer: React.FC<{
     >
       <div>
         {navMenu.map(({ label, link }, index) => (
-          <NextLink href={link} passHref>
+          <NextLink href={link} passHref key={uuid4()}>
             <Typography className={classes.mobileHamBurgerMenuLinks}>
               {label}
             </Typography>
@@ -93,7 +93,7 @@ function Header() {
       </div>
       <nav className={classes.nav}>
         {navMenu.map(({ label, link }) => (
-          <NextLink href={link} passHref>
+          <NextLink href={link} passHref key={uuid4()}>
             <Typography className={classes.navLink}>{label}</Typography>
           </NextLink>
         ))}

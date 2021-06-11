@@ -2,6 +2,9 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     header: {
+      position: "sticky",
+      top: 0,
+      zIndex: 999,
       background: "white",
       padding: "1em",
       [theme.breakpoints.up("md")]: {

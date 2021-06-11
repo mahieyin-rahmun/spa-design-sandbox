@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme: Theme) => {
     sectionTitle: {
       textTransform: "uppercase",
       letterSpacing: "0.2em",
-      marginBottom: "2em",
+      marginBottom: "1em",
     },
   });
 });
@@ -60,7 +60,7 @@ function Pricing() {
   const classes = useStyles();
 
   return (
-    <section className={classes.root}>
+    <section className={classes.root} id="pricing">
       <Typography
         variant="h4"
         align="center"
