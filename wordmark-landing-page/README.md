@@ -1,5 +1,7 @@
 ## WoodMark: fully responsive landing page
 
+Deployed at [Vercel](https://woodmark-landing-page.vercel.app/).
+
 Tech stack:
 - Next.js
 - TypeScript
