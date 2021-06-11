@@ -31,8 +31,27 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     testimonialText: {
       fontSize: "1.3em",
+      "&:before": {
+        content: "'\"'",
+        fontFamily: "Times New Roman",
+        fontSize: "2em",
+        marginRight: "0.25em",
+      },
+      "&:after": {
+        content: "'\"'",
+        fontFamily: "Times New Roman",
+        fontSize: "2em",
+        marginLeft: "0.25em",
+      },
     },
-    testimonialAuthor: {},
+    testimonialAuthor: {
+      textTransform: "uppercase",
+      fontStyle: "italic",
+      "&:before": {
+        content: "'-'",
+        marginRight: "1em",
+      },
+    },
     root: {
       position: "relative",
       margin: "6em 0",

@@ -1,6 +1,6 @@
 import React from "react";
 import { v4 as uuid4 } from "uuid";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -11,13 +11,20 @@ import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import { FaHandPointRight } from "react-icons/fa";
 import { TPricingCardProps } from "../../../types";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     maxWidth: 345,
     position: "relative",
     display: "block",
     margin: "3em auto",
     boxShadow: `1em 1em 1em #c5c5c5`,
+
+    [theme.breakpoints.up("lg")]: {
+      "&:hover": {
+        transform: "scale(1.2)",
+        transition: "transform 1s",
+      },
+    },
   },
   media: {
     height: 140,
@@ -40,7 +47,7 @@ const useStyles = makeStyles({
     display: "block",
     margin: "0 auto 1em auto",
   },
-});
+}));
 
 const PricingCard: React.FC<TPricingCardProps> = ({
   tierName,
