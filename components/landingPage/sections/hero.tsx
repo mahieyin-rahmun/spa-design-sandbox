@@ -1,4 +1,4 @@
-import { Typography, Button } from "@material-ui/core";
+import { Typography, Button, Container } from "@material-ui/core";
 import React from "react";
 import { BsCameraVideo } from "react-icons/bs";
 
@@ -47,7 +47,7 @@ function Hero() {
   const classes = useStyles();
 
   return (
-    <section className={classes.hero}>
+    <Container className={classes.hero}>
       <div>
         <Typography
           variant="h6"
@@ -81,7 +81,7 @@ function Hero() {
           Watch a demo
         </Button>
       </div>
-    </section>
+    </Container>
   );
 }
 

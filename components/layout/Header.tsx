@@ -11,6 +11,7 @@ import NextLink from "next/link";
 import useLayoutStyles from "./layout.styles";
 import { v4 as uuid4 } from "uuid";
 import { FaHamburger } from "react-icons/fa";
+import Logo from "./common/Logo";
 
 const navMenu = [
   {
@@ -38,22 +39,7 @@ function Header() {
   return (
     <header className={classes.header}>
       <div className={classes.container}>
-        <span className={classes.inlineBlock}>
-          <Typography
-            variant="h4"
-            color="textPrimary"
-            className={classes.inlineBlock}
-          >
-            Wood
-          </Typography>
-          <Typography
-            variant="h4"
-            color="textPrimary"
-            className={`${classes.inlineBlock} ${classes.span}`}
-          >
-            Mark
-          </Typography>
-        </span>
+        <Logo />
         <IconButton>
           <FaHamburger />
         </IconButton>

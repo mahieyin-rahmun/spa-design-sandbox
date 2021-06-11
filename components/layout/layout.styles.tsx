@@ -21,6 +21,11 @@ const useStyles = makeStyles((theme: Theme) => {
     nav: {
       display: "none",
     },
+    footer: {
+      display: "flex",
+      alignItems: "flex-end",
+      justifyContent: "center",
+    },
   });
 });
 

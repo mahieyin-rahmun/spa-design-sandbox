@@ -1,4 +1,4 @@
-import { Typography } from "@material-ui/core";
+import { Typography, Container } from "@material-ui/core";
 import Head from "next/head";
 import Features from "../components/landingPage/sections/features";
 import Hero from "../components/landingPage/sections/hero";
