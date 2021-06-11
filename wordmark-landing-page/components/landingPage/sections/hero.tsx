@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) => {
       color: "#fff",
       fontWeight: "bold",
       padding: "0.25em 1em",
-      fontSize: "2.5em",
+      fontSize: "2em",
       borderRadius: "5em",
       marginBottom: theme.spacing(4),
       [theme.breakpoints.up("lg")]: {
@@ -43,11 +43,11 @@ const useStyles = makeStyles((theme: Theme) => {
     },
     watchDemoButton: {
       fontWeight: "bold",
-      fontSize: "2em",
+      fontSize: "1.5em",
       borderRadius: "5em",
       padding: "0.25em 1em",
       [theme.breakpoints.up("lg")]: {
-        fontSize: "1.7em",
+        fontSize: "1.5em",
       },
     },
     videoIcon: {
