@@ -1,5 +1,6 @@
 import { createMuiTheme } from "@material-ui/core";
 
+export const settingsModalButtonColor = "#ff4d6e";
 export const pomodoroClockRightSideShadowColor = "#292150";
 
 const textTheme = createMuiTheme({
