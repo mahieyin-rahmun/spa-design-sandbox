@@ -4,7 +4,7 @@ import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 import { v4 as uuid4 } from "uuid";
 import { TTimerTabProps } from "../types";
 
@@ -25,8 +25,18 @@ function TabPanel(props: TabPanelProps) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
+      style={{
+        width: "100%",
+        height: "400px",
+        margin: "0 auto",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
     >
-      {value === index && <Box p={3}>{children}</Box>}
+      {value === index && children}
     </div>
   );
 }
@@ -40,9 +50,13 @@ function a11yProps(index: any) {
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    backgroundColor: theme.palette.background.default,
-    width: 500,
+    height: "100%",
   },
+  appbar: {
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
+  },
+  swipeableViews: {},
 }));
 
 const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
@@ -59,12 +73,11 @@ const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="default">
+    <Container maxWidth="md" className={classes.root}>
+      <AppBar position="static" className={classes.appbar}>
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
           textColor="primary"
           variant="fullWidth"
         >
@@ -77,6 +90,7 @@ const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}
         onChangeIndex={handleChangeIndex}
+        className={classes.swipeableViews}
       >
         {items.map(({ children }, index) => (
           <TabPanel
@@ -89,7 +103,7 @@ const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
           </TabPanel>
         ))}
       </SwipeableViews>
-    </div>
+    </Container>
   );
 };
 

@@ -1,9 +1,10 @@
-import { IconButton, Typography, useTheme } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { IconButton, Typography, useTheme, Container } from "@material-ui/core";
 import React from "react";
 import Timer from "../components/Timer";
 import TimerTabs from "../components/TimerTabs";
 import { TTimerWithTabLabel } from "../types";
-import { BsGearFill } from "react-icons/all";
+import { BsGearFill } from "react-icons/bs";
 
 const timers: TTimerWithTabLabel[] = [
   {
@@ -20,17 +21,33 @@ const timers: TTimerWithTabLabel[] = [
   },
 ];
 
+const useStyles = makeStyles((theme: Theme) => {
+  return createStyles({
+    root: {
+      display: "flex",
+      height: "100vh",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "space-around",
+      padding: "5em 0",
+    },
+  });
+});
+
 function Pomodoro() {
   const theme = useTheme();
+  const classes = useStyles();
 
   return (
-    <div>
-      <Typography variant="h3">pomodoro</Typography>
+    <Container maxWidth="lg" className={classes.root}>
+      <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
+        pomodoro
+      </Typography>
       <TimerTabs items={timers} />
-      {/* <IconButton> */}
-      {/* <BsGearFill style={{ color: theme.palette.text.primary }} />
-      </IconButton> */}
-    </div>
+      <IconButton>
+        <BsGearFill style={{ color: theme.palette.text.primary }} />
+      </IconButton>
+    </Container>
   );
 }
 
