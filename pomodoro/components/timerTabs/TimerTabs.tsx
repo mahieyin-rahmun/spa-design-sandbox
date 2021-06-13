@@ -1,22 +1,16 @@
 import React from "react";
 import SwipeableViews from "react-swipeable-views";
-import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Container from "@material-ui/core/Container";
 import { v4 as uuid4 } from "uuid";
-import { TTimerTabProps } from "../types";
+import { ITabPanelProps, TTimerTabProps } from "../../types";
+import useStyles from "./timerTabs.styles";
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  dir?: string;
-  index: any;
-  value: any;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
+function TabPanel(props: ITabPanelProps) {
+  const { children, value, index, className, ...other } = props;
 
   return (
     <div
@@ -25,14 +19,7 @@ function TabPanel(props: TabPanelProps) {
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
-      style={{
-        width: "100%",
-        height: "600px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      className={className}
     >
       {value === index && children}
     </div>
@@ -45,19 +32,6 @@ function a11yProps(index: any) {
     "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    height: "100%",
-  },
-  appbar: {
-    marginTop: theme.spacing(5),
-    marginBottom: theme.spacing(5),
-  },
-  swipeableViews: {
-    height: "600px",
-  },
-}));
 
 const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
   const classes = useStyles();
@@ -98,6 +72,7 @@ const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
             index={index}
             dir={theme.direction}
             key={uuid4()}
+            className={classes.tabPanel}
           >
             {children}
           </TabPanel>
