@@ -9,7 +9,7 @@ import { BsGearFill } from "react-icons/bs";
 const timers: TTimerWithTabLabel[] = [
   {
     tabLabel: "pomodoro",
-    children: <Timer duration={25 * 60} />,
+    children: <Timer duration={60} />,
   },
   {
     tabLabel: "short break",

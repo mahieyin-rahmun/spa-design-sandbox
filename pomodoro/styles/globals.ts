@@ -30,6 +30,12 @@ export const globalTheme = createMuiTheme({
     },
   },
   overrides: {
+    MuiCircularProgress: {
+      circle: {
+        strokeLinecap: "round",
+        strokeWidth: "1.5",
+      },
+    },
     MuiAppBar: {
       root: {
         borderRadius: "5em",

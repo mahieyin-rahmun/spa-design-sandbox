@@ -1,9 +1,10 @@
-import { Button, Typography } from "@material-ui/core";
+import { Button, CircularProgress, Typography } from "@material-ui/core";
 import { Duration } from "luxon";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { TTimerProps } from "../types";
-
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
+import { pomodoroClockRightSideShadowColor } from "../styles/globals";
+
 const useStyles = makeStyles((theme: Theme) => {
   return createStyles({
     root: {
@@ -15,6 +16,36 @@ const useStyles = makeStyles((theme: Theme) => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
+      position: "relative",
+    },
+    progress: {
+      position: "absolute",
+    },
+    outerCircle: {
+      display: "flex",
+      background: "linear-gradient(-45deg, #291f4f, #141032)",
+      width: "330px",
+      height: "330px",
+      borderRadius: "50%",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: `
+        -2em -2em 3em 0.5em #2a1f54,
+        2em 2em 3em 0.5em #161035
+      `,
+    },
+    timerText: {
+      marginTop: "0.5em",
+      fontWeight: "bold",
+    },
+    button: {
+      fontSize: "1.25em",
+      letterSpacing: "0.5em",
+      textTransform: "uppercase",
+      padding: "0 1em",
+      margin: "0.5em auto",
+      border: `1px solid ${theme.palette.text.secondary}`,
+      borderRadius: "5em",
     },
   });
 });
@@ -67,24 +98,43 @@ const Timer: React.FC<TTimerProps> = ({ duration }) => {
   }, [secondsLeft, isPaused]);
 
   return (
-    <div className={classes.root}>
-      <Typography variant="h2">
-        {Duration.fromMillis(secondsLeft * 1000).toFormat("mm:ss")}
-      </Typography>
-      {secondsLeft > 0 && (
-        <>
-          {!isStarted ? (
-            <Button onClick={() => handleStart()}>Start</Button>
-          ) : (
-            <>
-              <Button onClick={() => toggleIsPaused()}>
+    <div className={classes.outerCircle}>
+      <div className={classes.root}>
+        <CircularProgress
+          variant="determinate"
+          value={((duration - secondsLeft) * 100) / duration}
+          color="secondary"
+          className={classes.progress}
+          size={270}
+        />
+        <Typography
+          variant="h2"
+          gutterBottom
+          color="textPrimary"
+          className={classes.timerText}
+        >
+          {Duration.fromMillis(secondsLeft * 1000).toFormat("mm:ss")}
+        </Typography>
+        {secondsLeft > 0 && (
+          <>
+            {!isStarted ? (
+              <Button onClick={() => handleStart()} className={classes.button}>
+                Start
+              </Button>
+            ) : (
+              <Button
+                onClick={() => toggleIsPaused()}
+                className={classes.button}
+              >
                 {!isPaused ? "Pause" : "Resume"}
               </Button>
-              <Button onClick={() => handleReset()}>Reset</Button>
-            </>
-          )}
-        </>
-      )}
+            )}
+          </>
+        )}
+        <Button onClick={() => handleReset()} className={classes.button}>
+          Reset
+        </Button>
+      </div>
     </div>
   );
 };
