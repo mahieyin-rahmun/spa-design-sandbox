@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme: Theme) => {
         -2em -2em 3em 0.5em #2a1f54,
         2em 2em 3em 0.5em #161035
       `,
+      [theme.breakpoints.up("sm")]: {
+        transform: "scale(1.1)",
+      },
+      [theme.breakpoints.up("md")]: {
+        transform: "scale(1.3)",
+      },
     },
     timerText: {
       marginTop: "0.5em",

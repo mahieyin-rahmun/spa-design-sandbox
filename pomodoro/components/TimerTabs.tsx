@@ -27,9 +27,7 @@ function TabPanel(props: TabPanelProps) {
       {...other}
       style={{
         width: "100%",
-        height: "400px",
-        margin: "0 auto",
-        textAlign: "center",
+        height: "600px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -56,7 +54,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginTop: theme.spacing(5),
     marginBottom: theme.spacing(5),
   },
-  swipeableViews: {},
+  swipeableViews: {
+    height: "600px",
+  },
 }));
 
 const TimerTabs: React.FC<TTimerTabProps> = ({ items }) => {
