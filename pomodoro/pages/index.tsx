@@ -13,6 +13,8 @@ import { BsGearFill } from "react-icons/bs";
 import SettingsModal from "../components/settingsModal/SettingsModal";
 import { settingsModalTheme } from "../styles/globals";
 import { useSettingsContext } from "../context/SettingsContext";
+import { HiOutlineInformationCircle } from "react-icons/hi";
+import NextLink from "next/link";
 
 const timers: TTimerWithTabLabel[] = [
   {
@@ -61,12 +63,24 @@ const useStyles = makeStyles((theme: Theme) => {
       alignItems: "center",
       justifyContent: "space-around",
       padding: "5em 0",
+      position: "relative",
+    },
+    actionIcon: {
+      fontSize: "35px",
+      color: theme.palette.text.primary,
+    },
+    actionsDiv: {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly",
     },
   });
 });
 
 function Pomodoro() {
-  const theme = useTheme();
   const classes = useStyles();
   const { settingsContext } = useSettingsContext();
   const [isSettingsDialogOpen, setIsSettingsDialogOpen] = React.useState(false);
@@ -77,9 +91,17 @@ function Pomodoro() {
         pomodoro
       </Typography>
       <TimerTabs items={getTimers(settingsContext)} />
-      <IconButton onClick={() => setIsSettingsDialogOpen(true)}>
-        <BsGearFill style={{ color: theme.palette.text.primary }} />
-      </IconButton>
+      <div className={classes.actionsDiv}>
+        <IconButton onClick={() => setIsSettingsDialogOpen(true)}>
+          <BsGearFill className={classes.actionIcon} />
+        </IconButton>
+        <a
+          href="https://en.wikipedia.org/wiki/Pomodoro_Technique"
+          target="__blank"
+        >
+          <HiOutlineInformationCircle className={classes.actionIcon} />
+        </a>
+      </div>
       <ThemeProvider theme={settingsModalTheme}>
         <SettingsModal
           title="Settings"
