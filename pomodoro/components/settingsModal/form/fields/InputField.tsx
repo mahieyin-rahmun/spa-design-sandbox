@@ -39,13 +39,14 @@ const InputField: React.FC<TInputFieldProps> = ({
   });
 
   return (
-    <FormControl error={Boolean(error)}>
+    <FormControl error={Boolean(error)} style={{ width: "100%" }}>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={4}>
+        <Grid item xs={4} md={12}>
           <FormLabel htmlFor={props.name}>{props.label}</FormLabel>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={8} md={12}>
           <OutlinedInput
+            fullWidth
             notched={false}
             id={props.name}
             {...field}

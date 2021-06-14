@@ -37,7 +37,12 @@ const SettingsModal: React.FC<ISettingsModalProps> = ({
         </DialogTitle>
         <Divider />
         <DialogContent>
-          <Typography variant="h6" color="textSecondary" gutterBottom>
+          <Typography
+            variant="h6"
+            align="center"
+            color="textSecondary"
+            gutterBottom
+          >
             Time (minutes)
           </Typography>
           <Formik
