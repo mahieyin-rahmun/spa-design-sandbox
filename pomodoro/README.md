@@ -1,3 +1,24 @@
+# Pomodoro Timer
+
+This is a [Frontend Mentor Advanced Challenge](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G) that I adapted over to React + Material UI with some variations that I introduced on my own.
+
+## Tech stack:
+- Next.js
+- TypeScript
+- Material UI
+
+#### For the curious minds: [What is Pomodoro?](https://en.wikipedia.org/wiki/Pomodoro_Technique)
+
+## Screenshots
+### Large screens
+![Large screen](./readme_images/large.png)
+
+### Medium screens
+![Medium screen](./readme_images/medium.png)
+
+### Small screens
+![Small screen](./readme_images/small.png)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
