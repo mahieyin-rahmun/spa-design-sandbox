@@ -1,5 +1,7 @@
 # Pomodoro Timer
 
+Deployed at [Vercel](https://pomodoro-is-love.vercel.app/)
+
 This is a [Frontend Mentor Advanced Challenge](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G) that I adapted over to React + Material UI with some variations that I introduced on my own.
 
 ## Tech stack:
