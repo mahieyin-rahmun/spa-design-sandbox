@@ -6,26 +6,28 @@ import { withStyles } from "@material-ui/core";
 import styles from "./dialogTitle.styles";
 import { IDialogTitleProps } from "../../../../types";
 
-const DialogTitle = withStyles(styles)((props: IDialogTitleProps) => {
-  const { children, classes, onClose, ...other } = props;
-  return (
-    <MuiDialogTitle
-      disableTypography
-      className={classes.dialogTitle}
-      {...other}
-    >
-      <Typography variant="h6">{children}</Typography>
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          className={classes.closeButton}
-          onClick={onClose}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </MuiDialogTitle>
-  );
-});
+const DialogTitle = withStyles(styles, { index: 1 })(
+  (props: IDialogTitleProps) => {
+    const { children, classes, onClose, ...other } = props;
+    return (
+      <MuiDialogTitle
+        disableTypography
+        className={classes.dialogTitle}
+        {...other}
+      >
+        <Typography variant="h6">{children}</Typography>
+        {onClose ? (
+          <IconButton
+            aria-label="close"
+            className={classes.closeButton}
+            onClick={onClose}
+          >
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </MuiDialogTitle>
+    );
+  },
+);
 
 export default DialogTitle;

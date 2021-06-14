@@ -15,40 +15,43 @@ import { useField } from "formik";
 import React from "react";
 
 const useStyles = (color: string) =>
-  makeStyles((theme: Theme) => {
-    return createStyles({
-      root: {
-        "&:hover": {
-          backgroundColor: "transparent",
+  makeStyles(
+    (theme: Theme) => {
+      return createStyles({
+        root: {
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
         },
-      },
-      icon: {
-        borderRadius: "50%",
-        width: 40,
-        height: 40,
-        boxShadow:
-          "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
-        backgroundColor: color,
-        backgroundImage:
-          "linear-gradient(0deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
-        "$root.Mui-focusVisible &": {
-          outlineOffset: 2,
+        icon: {
+          borderRadius: "50%",
+          width: 40,
+          height: 40,
+          boxShadow:
+            "inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)",
+          backgroundColor: color,
+          backgroundImage:
+            "linear-gradient(0deg,hsla(0,0%,100%,.8),hsla(0,0%,100%,0))",
+          "$root.Mui-focusVisible &": {
+            outlineOffset: 2,
+          },
+          "input:hover ~ &": {
+            filter: "brightness(1.2)",
+          },
         },
-        "input:hover ~ &": {
-          filter: "brightness(1.2)",
+        checkedIcon: {
+          backgroundColor: color,
+          color: theme.palette.text.primary,
+          paddingTop: "5px",
+          "&:before": {
+            content: '"✔"',
+          },
+          "input:hover ~ &": {},
         },
-      },
-      checkedIcon: {
-        backgroundColor: color,
-        color: theme.palette.text.primary,
-        paddingTop: "5px",
-        "&:after": {
-          content: '"✔️"',
-        },
-        "input:hover ~ &": {},
-      },
-    });
-  })();
+      });
+    },
+    { index: 1 },
+  )();
 
 const StyledRadio: React.FC<RadioProps & { radioButtonFill: string }> = (
   props,

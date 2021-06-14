@@ -54,31 +54,34 @@ const getTimers = (settingsContext: TSettingsState | undefined) => {
   return updatedTimers;
 };
 
-const useStyles = makeStyles((theme: Theme) => {
-  return createStyles({
-    root: {
-      display: "flex",
-      height: "100vh",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "space-around",
-      padding: "5em 0",
-      position: "relative",
-    },
-    actionIcon: {
-      fontSize: "35px",
-      color: theme.palette.text.primary,
-    },
-    actionsDiv: {
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "space-evenly",
-    },
-  });
-});
+const useStyles = makeStyles(
+  (theme: Theme) => {
+    return createStyles({
+      root: {
+        display: "flex",
+        height: "100vh",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-around",
+        padding: "5em 0",
+        position: "relative",
+      },
+      actionIcon: {
+        fontSize: "35px",
+        color: theme.palette.text.primary,
+      },
+      actionsDiv: {
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+      },
+    });
+  },
+  { index: 1 },
+);
 
 function Pomodoro() {
   const classes = useStyles();

@@ -132,4 +132,4 @@ const SettingsModal: React.FC<ISettingsModalProps> = ({
   );
 };
 
-export default withStyles(styles)(SettingsModal);
+export default withStyles(styles, { index: 1 })(SettingsModal);
