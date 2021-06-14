@@ -11,6 +11,13 @@ const textTheme = createMuiTheme({
   },
 });
 
+export const settingsModalTheme = createMuiTheme({
+  ...textTheme,
+  palette: {
+    type: "light",
+  },
+});
+
 export const globalTheme = createMuiTheme({
   ...textTheme,
   palette: {
@@ -71,3 +78,30 @@ export const globalTheme = createMuiTheme({
     },
   },
 });
+
+export const getTheme = (accentColor: string) =>
+  createMuiTheme({
+    ...globalTheme,
+    palette: {
+      ...globalTheme.palette,
+      secondary: {
+        main: accentColor,
+      },
+    },
+    overrides: {
+      ...globalTheme.overrides,
+      MuiTab: {
+        root: {
+          background: "#161332",
+          padding: "0.5em",
+          "&$selected": {
+            background: accentColor,
+            borderRadius: "5em",
+            "& span": {
+              color: "#1f1940",
+            },
+          },
+        },
+      },
+    },
+  });
