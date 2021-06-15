@@ -62,7 +62,7 @@ const useStyles = makeStyles(
         height: "100vh",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         padding: "5em 0",
         position: "relative",
       },

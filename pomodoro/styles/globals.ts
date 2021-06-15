@@ -40,7 +40,7 @@ export const globalTheme = createMuiTheme({
     MuiCircularProgress: {
       circle: {
         strokeLinecap: "round",
-        strokeWidth: "1.5",
+        strokeWidth: "0.9",
       },
     },
     MuiAppBar: {

@@ -48,6 +48,9 @@ const useStyles = makeStyles(
         margin: "0.5em auto",
         border: `1px solid ${theme.palette.text.secondary}`,
         borderRadius: "5em",
+        [theme.breakpoints.up("md")]: {
+          fontSize: "1em",
+        },
       },
     });
   },
