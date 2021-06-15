@@ -1,16 +1,19 @@
+import notificationSound from "../../public/notification.wav";
 import { Button, CircularProgress, Typography } from "@material-ui/core";
 import { Duration } from "luxon";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { TTimerProps } from "../../types";
 import useStyles from "./timer.styles";
+import useSound from "use-sound";
 
 // the duration is in seconds
 const Timer: React.FC<TTimerProps> = ({ duration }) => {
-  const [secondsLeft, setSecondsLeft] = useState(() => duration);
+  const [secondsLeft, setSecondsLeft] = useState(duration);
   const [isStarted, setIsStarted] = useState(false);
   const intervalIdRef = useRef<NodeJS.Timeout>();
   const [isPaused, setIsPaused] = useState(true);
   const classes = useStyles();
+  const [play] = useSound(notificationSound);
 
   const handleClearInterval = useCallback(() => {
     if (intervalIdRef.current) {
@@ -37,18 +40,32 @@ const Timer: React.FC<TTimerProps> = ({ duration }) => {
   }, []);
 
   useEffect(() => {
-    const updateTimer = () => {
-      setSecondsLeft((previousValue) => previousValue - 1);
+    if (secondsLeft === 0) {
+      play();
+    }
+  }, [secondsLeft]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    if (isMounted) {
+      const updateTimer = () => {
+        setSecondsLeft((previousValue) => previousValue - 1);
+      };
+
+      if (!Boolean(intervalIdRef.current) && secondsLeft > 0) {
+        const intervalId = setInterval(updateTimer, 1000);
+        intervalIdRef.current = intervalId;
+      }
+
+      if (secondsLeft === 0 || isPaused) {
+        handleClearInterval();
+      }
+    }
+
+    return () => {
+      isMounted = false;
     };
-
-    if (!Boolean(intervalIdRef.current) && secondsLeft > 0) {
-      const intervalId = setInterval(updateTimer, 1000);
-      intervalIdRef.current = intervalId;
-    }
-
-    if (secondsLeft === 0 || isPaused) {
-      handleClearInterval();
-    }
   }, [secondsLeft, isPaused]);
 
   return (
@@ -59,7 +76,7 @@ const Timer: React.FC<TTimerProps> = ({ duration }) => {
           value={((duration - secondsLeft) * 100) / duration}
           color="secondary"
           className={classes.progress}
-          size={270}
+          size={300}
         />
         <Typography
           variant="h2"
