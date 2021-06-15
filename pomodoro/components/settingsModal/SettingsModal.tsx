@@ -72,7 +72,7 @@ const SettingsModal: React.FC<ISettingsModalProps> = ({
                       name="pomodoro"
                       label="pomodoro"
                       type="number"
-                      min="5"
+                      min="1"
                       max="60"
                       step="1"
                     />
@@ -83,7 +83,7 @@ const SettingsModal: React.FC<ISettingsModalProps> = ({
                         name="short_break"
                         label="short break"
                         type="number"
-                        min="5"
+                        min="1"
                         max="60"
                         step="1"
                       />
@@ -95,7 +95,7 @@ const SettingsModal: React.FC<ISettingsModalProps> = ({
                         name="long_break"
                         label="long break"
                         type="number"
-                        min="15"
+                        min="1"
                         max="60"
                         step="1"
                       />
