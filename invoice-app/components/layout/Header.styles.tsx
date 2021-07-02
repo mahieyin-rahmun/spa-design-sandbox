@@ -26,6 +26,22 @@ const useHeaderStyles = makeStyles((theme: Theme) => {
         position: "absolute",
         right: 85,
       },
+
+      [theme.breakpoints.up("md")]: {
+        flexDirection: "column",
+        width: 120,
+        height: "100%",
+
+        "&::before": {
+          content: "''",
+          height: 1,
+          width: "100%",
+          background: grey["700"],
+          position: "absolute",
+          bottom: 90,
+          right: 0,
+        },
+      },
     },
 
     themeSelectorAndAvatar: {
@@ -33,12 +49,21 @@ const useHeaderStyles = makeStyles((theme: Theme) => {
       alignItems: "center",
       position: "relative",
       height: "100%",
+
+      [theme.breakpoints.up("md")]: {
+        flexDirection: "column",
+        height: "auto",
+      },
     },
 
     avatar: {
       width: 50,
       height: 50,
       margin: "0 1em",
+
+      [theme.breakpoints.up("md")]: {
+        margin: "1em 1em",
+      },
     },
   });
 });
