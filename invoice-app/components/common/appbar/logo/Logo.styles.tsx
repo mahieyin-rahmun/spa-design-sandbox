@@ -2,8 +2,8 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core";
 const useLogoStyles = makeStyles((theme: Theme) => {
   return createStyles({
     container: {
-      width: 120,
-      height: 120,
+      width: 100,
+      height: 100,
       position: "relative",
 
       "&::before": {
@@ -15,6 +15,10 @@ const useLogoStyles = makeStyles((theme: Theme) => {
         zIndex: 99,
         left: -10,
       },
+
+      "&:hover": {
+        cursor: "pointer",
+      },
     },
 
     root: {
@@ -24,7 +28,7 @@ const useLogoStyles = makeStyles((theme: Theme) => {
       padding: "1em",
       display: "grid",
       placeItems: "center",
-      borderRadius: "2em",
+      borderRadius: "1em",
       position: "relative",
       overflow: "hidden",
 
