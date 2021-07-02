@@ -1,7 +1,7 @@
 import { createMuiTheme } from "@material-ui/core";
 import { lime, green } from "@material-ui/core/colors";
 
-export const LIGHT_SIDEBAR_BACKGROUND = "#393555";
+export const LIGHT_SIDEBAR_BACKGROUND = "#391255";
 export const DARK_SIDEBAR_BACKGROUND = "#221939";
 
 export const globalLightTheme = createMuiTheme({
@@ -30,7 +30,7 @@ export const globalLightTheme = createMuiTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 720,
+      md: 900,
       lg: 1280,
       xl: 1920,
     },
@@ -63,7 +63,7 @@ export const globalDarkTheme = createMuiTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 720,
+      md: 900,
       lg: 1280,
       xl: 1920,
     },

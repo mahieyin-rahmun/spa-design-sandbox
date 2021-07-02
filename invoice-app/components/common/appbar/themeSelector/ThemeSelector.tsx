@@ -15,11 +15,11 @@ function ThemeSelector() {
   }, [theme]);
 
   return (
-    <IconButton onClick={() => toggleTheme()}>
+    <IconButton onClick={() => toggleTheme()} className={classes.iconButton}>
       {isDarkTheme ? (
-        <HiOutlineMoon className={classes.iconButton} />
+        <HiOutlineMoon className={classes.icon} />
       ) : (
-        <HiOutlineLightBulb className={classes.iconButton} />
+        <HiOutlineLightBulb className={classes.icon} />
       )}
     </IconButton>
   );
