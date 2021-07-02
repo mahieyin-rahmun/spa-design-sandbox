@@ -30,8 +30,7 @@ const useInvoiceStyles = (status: EInvoiceStatus) =>
           gap: theme.spacing(0.5),
           gridTemplateColumns: "0.75fr 1fr 1fr 0.75fr 0.75fr",
           gridTemplateRows: "1fr",
-          gridTemplateAreas: `"id name dueDate amount status button"
-          ". . . . . ."`,
+          gridTemplateAreas: `"id name dueDate amount status"`,
         },
       },
 

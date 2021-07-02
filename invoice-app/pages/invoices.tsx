@@ -3,13 +3,13 @@ import {
   Container,
   Grid,
   Typography,
-  Button,
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
 import React from "react";
 import { v4 as uuid4 } from "uuid";
 import Invoice from "../components/common/content/invoice/Invoice";
+import CreateInvoiceButton from "../components/common/content/invoiceButton/CreateInvoiceButton";
 import { EInvoiceStatus, IInvoice } from "../types/server";
 
 const invoiceData: IInvoice[] = [
@@ -50,34 +50,47 @@ const invoiceData: IInvoice[] = [
   },
 ];
 
+import { createStyles, makeStyles, Theme } from "@material-ui/core";
+const useStyles = makeStyles((theme: Theme) => {
+  return createStyles({
+    title: {
+      fontWeight: "bold",
+    },
+  });
+});
+
 function InvoicePage() {
   const theme = useTheme();
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const classes = useStyles();
 
   return (
     <Container maxWidth="lg">
       <Box my={isMediumScreen ? 4 : 2} py={isMediumScreen ? 4 : 2}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={6}>
-            <Typography color="textPrimary" variant="h4" gutterBottom>
+            <Typography
+              color="textPrimary"
+              variant="h4"
+              gutterBottom
+              className={classes.title}
+            >
               Invoices
             </Typography>
-            <Typography color="textPrimary" gutterBottom>
+            <Typography variant="h6" color="textPrimary" gutterBottom>
               {invoiceData &&
                 (isMediumScreen
                   ? `There are ${invoiceData.length} total invoices.`
                   : `${invoiceData.length} invoices`)}
             </Typography>
           </Grid>
-          <Grid container item xs={3} justify="flex-end">
-            <Typography color="textPrimary" variant="h5" gutterBottom>
+          <Grid container item xs={2} md={3} justify="flex-end">
+            <Typography color="textPrimary" variant="h6" gutterBottom>
               Filter
             </Typography>
           </Grid>
-          <Grid container item xs={3} justify="flex-end">
-            <Button color="primary" variant="contained">
-              {isMediumScreen ? "New Invoice" : "New"}
-            </Button>
+          <Grid container item xs={4} md={3} justify="flex-end">
+            <CreateInvoiceButton />
           </Grid>
         </Grid>
       </Box>
