@@ -19,6 +19,11 @@ const useLogoStyles = makeStyles((theme: Theme) => {
       "&:hover": {
         cursor: "pointer",
       },
+
+      [theme.breakpoints.up("md")]: {
+        width: 120,
+        height: 120,
+      },
     },
 
     root: {
