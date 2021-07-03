@@ -112,6 +112,7 @@ function InvoicePage() {
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.ID);
   const [isFormDrawerOpen, setIsFormDrawerOpen] = useState(false);
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
   const classes = useStyles();
 
   const handleFilterChange = (event: React.ChangeEvent<SelectProps>) => {
@@ -151,15 +152,30 @@ function InvoicePage() {
               />
             </Grid>
             <Grid container item xs={12} md={6} justify="flex-end">
-              <Select
-                name="filter"
-                value={sortBy}
-                onChange={handleFilterChange}
-              >
-                <MenuItem value={SortBy.ID}>Sort by ID</MenuItem>
-                <MenuItem value={SortBy.STATUS}>Sort by Status</MenuItem>
-                <MenuItem value={SortBy.AMOUNT}>Sort by Amount</MenuItem>
-              </Select>
+              <Grid item xs={12}>
+                <Typography variant="subtitle1" color="textSecondary">
+                  {isLargeScreen ? "" : "Sort by"}
+                </Typography>
+              </Grid>
+              <Grid item xs={12}>
+                <Select
+                  name="filter"
+                  value={sortBy}
+                  onChange={handleFilterChange}
+                  variant="outlined"
+                  fullWidth
+                >
+                  <MenuItem value={SortBy.ID}>
+                    {isLargeScreen ? "Sort by ID" : "ID"}
+                  </MenuItem>
+                  <MenuItem value={SortBy.STATUS}>
+                    {isLargeScreen ? "Sort by Status" : "Status"}
+                  </MenuItem>
+                  <MenuItem value={SortBy.AMOUNT}>
+                    {isLargeScreen ? "Sort by Amount" : "Amount"}
+                  </MenuItem>
+                </Select>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
