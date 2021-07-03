@@ -61,6 +61,11 @@ export const globalLightTheme = createMuiTheme({
         },
       },
     },
+    MuiDrawer: {
+      paperAnchorLeft: {
+        marginLeft: 120,
+      },
+    },
   },
 });
 
@@ -116,6 +121,11 @@ export const globalDarkTheme = createMuiTheme({
     MuiOutlinedInput: {
       root: {
         background: DARK_FORM_FIELD_AND_BUTTON_COLOR,
+      },
+    },
+    MuiDrawer: {
+      paperAnchorLeft: {
+        marginLeft: 120,
       },
     },
   },

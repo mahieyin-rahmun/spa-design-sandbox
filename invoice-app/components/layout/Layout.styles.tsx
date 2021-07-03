@@ -4,17 +4,28 @@ const useLayoutStyles = makeStyles((theme: Theme) => {
     container: {
       display: "grid",
       gridTemplateAreas: `"appbar"
-      "content"`,
+      "content" 
+      "footer"`,
 
       [theme.breakpoints.up("md")]: {
-        height: "100vh",
-        gridTemplateAreas: `"appbar" "content"`,
-        gridTemplateColumns: "120px 1fr",
+        minHeight: "100vh",
+        gridTemplateAreas: `"appbar content footer"`,
+        gridTemplateColumns: "120px 1fr 120px",
         gridTemplateRows: "1fr",
       },
     },
     appbar: {
       gridArea: "appbar",
+    },
+
+    content: {
+      gridArea: "content",
+    },
+
+    footer: {
+      gridArea: "footer",
+      width: "100%",
+      height: "100%",
     },
   });
 });
