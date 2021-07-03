@@ -1,6 +1,7 @@
 // Courtesy: https://dev.to/unframework/getting-typeorm-to-work-with-next-js-and-typescript-1len
 
 import { createConnection, getConnection } from "typeorm";
+import { Address, Invoice, ProjectItem } from "../entities/entities";
 
 let connectionReadyPromise: Promise<void> | null = null;
 
@@ -24,7 +25,7 @@ export function prepareConnection() {
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         port: Number(process.env.DB_PORT),
-        entities: [],
+        entities: [Address, Invoice, ProjectItem],
         synchronize: process.env.NODE_ENV === "development",
         logging: process.env.NODE_ENV === "development",
       });
