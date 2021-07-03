@@ -6,7 +6,7 @@ import {
   useTheme,
   useMediaQuery,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { v4 as uuid4 } from "uuid";
 import Invoice from "../components/common/content/invoice/Invoice";
 import CreateInvoiceButton from "../components/common/content/invoiceButton/CreateInvoiceButton";
@@ -51,7 +51,8 @@ const invoiceData: IInvoice[] = [
 ];
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
-const useStyles = makeStyles((theme: Theme) => {
+import SwipeableFormDrawer from "../components/common/forms/invoice/FormDrawer";
+const useStyles = makeStyles((_: Theme) => {
   return createStyles({
     title: {
       fontWeight: "bold",
@@ -61,11 +62,16 @@ const useStyles = makeStyles((theme: Theme) => {
 
 function InvoicePage() {
   const theme = useTheme();
+  const [isFormDrawerOpen, setIsFormDrawerOpen] = useState(false);
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
   const classes = useStyles();
 
   return (
     <Container maxWidth="lg">
+      <SwipeableFormDrawer
+        open={isFormDrawerOpen}
+        setIsOpen={setIsFormDrawerOpen}
+      />
       <Box my={isMediumScreen ? 4 : 2} py={isMediumScreen ? 4 : 2}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={6}>
@@ -90,7 +96,11 @@ function InvoicePage() {
             </Typography>
           </Grid>
           <Grid container item xs={4} md={3} justify="flex-end">
-            <CreateInvoiceButton />
+            <CreateInvoiceButton
+              onClick={() => {
+                setIsFormDrawerOpen(true);
+              }}
+            />
           </Grid>
         </Grid>
       </Box>

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { IInvoice } from "./server";
 
 export type TInvoiceProps = {
@@ -5,6 +6,7 @@ export type TInvoiceProps = {
 };
 
 export type TInvoiceFormProps = {
+  setIsFormDrawerOpen?: Dispatch<SetStateAction<boolean>>;
   invoiceData?: IInvoice;
 };
 

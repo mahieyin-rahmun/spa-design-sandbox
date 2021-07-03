@@ -19,6 +19,7 @@ import InputField from "../fields/InputField";
 import SelectField from "../fields/SelectField";
 import useInvoiceFormStyles from "./InvoiceForm.styles";
 import validationSchema from "../../../../lib/validationSchema/InvoiceFormSchema";
+import { useRouter } from "next/dist/client/router";
 
 const formInitialValues: TInvoiceFormInputTypes.TInvoiceFormModel = {
   from: {
@@ -47,10 +48,22 @@ const formInitialValues: TInvoiceFormInputTypes.TInvoiceFormModel = {
   projectDescription: "",
 };
 
-const InvoiceForm: React.FC<TInvoiceFormProps> = ({ invoiceData }) => {
+const InvoiceForm: React.FC<TInvoiceFormProps> = ({
+  invoiceData,
+  setIsFormDrawerOpen,
+}) => {
   const classes = useInvoiceFormStyles();
   const theme = useTheme();
   const isMobileScreen = useMediaQuery(theme.breakpoints.down("xs"));
+  const router = useRouter();
+
+  const handleCancelClick = (_: React.MouseEvent) => {
+    if (setIsFormDrawerOpen) {
+      return setIsFormDrawerOpen(false);
+    }
+
+    return router.push("/invoices");
+  };
 
   return (
     <Container maxWidth="md" className={classes.root}>
@@ -278,7 +291,12 @@ const InvoiceForm: React.FC<TInvoiceFormProps> = ({ invoiceData }) => {
                   {invoiceData ? "Save Changes" : "Save"}
                 </Button>
               </Box>
-              <Button color="default" variant="contained" type="button">
+              <Button
+                color="default"
+                variant="contained"
+                type="button"
+                onClick={handleCancelClick}
+              >
                 Cancel
               </Button>
             </Box>

@@ -17,8 +17,8 @@ const CreateInvoiceButton: React.FC<ButtonProps> = (props) => {
       color="primary"
       variant="contained"
       className={classes.root}
-      {...props}
       startIcon={<div className={classes.icon} />}
+      {...props}
     >
       {isMediumScreen ? "New Invoice" : "New"}
     </Button>
