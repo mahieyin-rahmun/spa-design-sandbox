@@ -5,6 +5,9 @@ import {
   Typography,
   useTheme,
   useMediaQuery,
+  Select,
+  MenuItem,
+  SelectProps,
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { v4 as uuid4 } from "uuid";
@@ -12,7 +15,7 @@ import Invoice from "../components/common/content/invoice/Invoice";
 import CreateInvoiceButton from "../components/common/content/invoiceButton/CreateInvoiceButton";
 import { EInvoiceStatus, IInvoice } from "../types/server";
 
-const invoiceData: IInvoice[] = [
+const hardCodedInvoiceData: IInvoice[] = [
   {
     id: uuid4(),
     amount: 1234,
@@ -22,33 +25,46 @@ const invoiceData: IInvoice[] = [
   },
   {
     id: uuid4(),
-    amount: 1234,
+    amount: 1232,
     clientName: "Mike Davis",
     dueDate: new Date(2020, 1, 19),
     status: EInvoiceStatus.DRAFT,
   },
   {
     id: uuid4(),
-    amount: 1234,
+    amount: 145,
     clientName: "John Evans",
     dueDate: new Date(2021, 4, 12),
     status: EInvoiceStatus.PENDING,
   },
   {
     id: uuid4(),
-    amount: 1234,
+    amount: 10000,
     clientName: "Mike Davis",
     dueDate: new Date(2020, 1, 19),
     status: EInvoiceStatus.DRAFT,
   },
   {
     id: uuid4(),
-    amount: 1234,
+    amount: 234,
     clientName: "Jonathan Devans",
     dueDate: new Date(2021, 4, 12),
     status: EInvoiceStatus.PENDING,
   },
+  {
+    id: uuid4(),
+    amount: 443,
+    clientName: "Jonathan Devans",
+    dueDate: new Date(2021, 12, 2),
+    status: EInvoiceStatus.PAID,
+  },
 ];
+
+enum SortBy {
+  ID,
+  AMOUNT,
+  STATUS,
+}
 
 import { createStyles, makeStyles, Theme } from "@material-ui/core";
 import SwipeableFormDrawer from "../components/common/forms/invoice/FormDrawer";
@@ -60,11 +76,47 @@ const useStyles = makeStyles((_: Theme) => {
   });
 });
 
+// This function returns a sorting function based on the value of sortBy
+const sortInvoices =
+  (sortBy: SortBy) => (invoice1: IInvoice, invoice2: IInvoice) => {
+    switch (sortBy) {
+      case SortBy.ID: {
+        return invoice1.id < invoice2.id
+          ? -1
+          : invoice1.id === invoice2.id
+          ? 0
+          : 1;
+      }
+      case SortBy.AMOUNT: {
+        return invoice1.amount < invoice2.amount
+          ? -1
+          : invoice1.amount === invoice2.amount
+          ? 0
+          : 1;
+      }
+      case SortBy.STATUS: {
+        return invoice1.status < invoice2.status
+          ? -1
+          : invoice1.status === invoice2.status
+          ? 0
+          : 1;
+      }
+    }
+  };
+
 function InvoicePage() {
   const theme = useTheme();
+  const [invoiceData, setInvoiceData] = useState<IInvoice[]>(
+    () => hardCodedInvoiceData,
+  );
+  const [sortBy, setSortBy] = useState<SortBy>(SortBy.ID);
   const [isFormDrawerOpen, setIsFormDrawerOpen] = useState(false);
   const isMediumScreen = useMediaQuery(theme.breakpoints.up("md"));
   const classes = useStyles();
+
+  const handleFilterChange = (event: React.ChangeEvent<SelectProps>) => {
+    setSortBy(event.target.value as SortBy);
+  };
 
   return (
     <Container maxWidth="lg">
@@ -73,7 +125,7 @@ function InvoicePage() {
         setIsOpen={setIsFormDrawerOpen}
       />
       <Box my={isMediumScreen ? 4 : 2} py={isMediumScreen ? 4 : 2}>
-        <Grid container spacing={2} alignItems="center">
+        <Grid container spacing={2} alignItems="center" justify="center">
           <Grid item xs={6}>
             <Typography
               color="textPrimary"
@@ -90,24 +142,32 @@ function InvoicePage() {
                   : `${invoiceData.length} invoices`)}
             </Typography>
           </Grid>
-          <Grid container item xs={2} md={3} justify="flex-end">
-            <Typography color="textPrimary" variant="h6" gutterBottom>
-              Filter
-            </Typography>
-          </Grid>
-          <Grid container item xs={4} md={3} justify="flex-end">
-            <CreateInvoiceButton
-              onClick={() => {
-                setIsFormDrawerOpen(true);
-              }}
-            />
+          <Grid container item xs={6} spacing={4} alignItems="center">
+            <Grid container item xs={12} md={6} justify="flex-end">
+              <CreateInvoiceButton
+                onClick={() => {
+                  setIsFormDrawerOpen(true);
+                }}
+              />
+            </Grid>
+            <Grid container item xs={12} md={6} justify="flex-end">
+              <Select
+                name="filter"
+                value={sortBy}
+                onChange={handleFilterChange}
+              >
+                <MenuItem value={SortBy.ID}>Sort by ID</MenuItem>
+                <MenuItem value={SortBy.STATUS}>Sort by Status</MenuItem>
+                <MenuItem value={SortBy.AMOUNT}>Sort by Amount</MenuItem>
+              </Select>
+            </Grid>
           </Grid>
         </Grid>
       </Box>
       {invoiceData &&
-        invoiceData.map((invoice) => (
-          <Invoice invoiceData={invoice} key={invoice.id} />
-        ))}
+        invoiceData
+          .sort(sortInvoices(sortBy))
+          .map((invoice) => <Invoice invoiceData={invoice} key={invoice.id} />)}
     </Container>
   );
 }
