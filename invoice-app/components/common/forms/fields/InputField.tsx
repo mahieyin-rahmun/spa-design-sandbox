@@ -43,12 +43,6 @@ const InputField: React.FC<TInputFieldProps> = ({
       error={Boolean(error)}
       style={{
         width: "100%",
-        maxWidth:
-          props.variant === "small"
-            ? "400px"
-            : props.variant === "medium"
-            ? "600px"
-            : "800px",
       }}
     >
       {Boolean(props.label) && (

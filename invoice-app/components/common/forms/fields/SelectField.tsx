@@ -32,12 +32,6 @@ const SelectField: React.FC<TSelectFieldProps> = ({
       error={Boolean(error)}
       style={{
         width: "100%",
-        maxWidth:
-          props.variant === "small"
-            ? "400px"
-            : props.variant === "medium"
-            ? "600px"
-            : "800px",
       }}
     >
       <FormLabel htmlFor={field.name} style={{ marginBottom: "1em" }}>
