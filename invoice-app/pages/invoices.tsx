@@ -13,9 +13,9 @@ import React, { useState } from "react";
 import { v4 as uuid4 } from "uuid";
 import Invoice from "../components/common/content/invoice/Invoice";
 import CreateInvoiceButton from "../components/common/content/invoiceButton/CreateInvoiceButton";
-import { EInvoiceStatus, IInvoice } from "../types/server";
+import { EInvoiceStatus, IInvoicePreview } from "../types/server";
 
-const hardCodedInvoiceData: IInvoice[] = [
+const hardCodedInvoiceData: IInvoicePreview[] = [
   {
     id: uuid4(),
     amount: 1234,
@@ -78,7 +78,8 @@ const useStyles = makeStyles((_: Theme) => {
 
 // This function returns a sorting function based on the value of sortBy
 const sortInvoices =
-  (sortBy: SortBy) => (invoice1: IInvoice, invoice2: IInvoice) => {
+  (sortBy: SortBy) =>
+  (invoice1: IInvoicePreview, invoice2: IInvoicePreview) => {
     switch (sortBy) {
       case SortBy.ID: {
         return invoice1.id < invoice2.id
@@ -106,7 +107,7 @@ const sortInvoices =
 
 function InvoicePage() {
   const theme = useTheme();
-  const [invoiceData, setInvoiceData] = useState<IInvoice[]>(
+  const [invoiceData, setInvoiceData] = useState<IInvoicePreview[]>(
     () => hardCodedInvoiceData,
   );
   const [sortBy, setSortBy] = useState<SortBy>(SortBy.ID);
