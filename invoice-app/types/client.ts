@@ -1,13 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
-import { IInvoice } from "./server";
+import { IInvoicePreview } from "./server";
 
 export type TInvoiceProps = {
-  invoiceData: Required<IInvoice>;
+  invoiceData: Required<IInvoicePreview>;
 };
 
 export type TInvoiceFormProps = {
   setIsFormDrawerOpen?: Dispatch<SetStateAction<boolean>>;
-  invoiceData?: IInvoice;
+  invoiceData?: IInvoicePreview;
 };
 
 export namespace TInvoiceFormInputTypes {
