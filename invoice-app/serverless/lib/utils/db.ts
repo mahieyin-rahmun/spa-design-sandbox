@@ -1,9 +1,9 @@
 // Courtesy: https://dev.to/unframework/getting-typeorm-to-work-with-next-js-and-typescript-1len
 
-import { createConnection, getConnection } from "typeorm";
+import { Connection, createConnection, getConnection } from "typeorm";
 import { Address, Invoice, ProjectItem } from "../entities/entities";
 
-let connectionReadyPromise: Promise<void> | null = null;
+let connectionReadyPromise: Promise<Connection> | null = null;
 
 export function prepareConnection() {
   if (!connectionReadyPromise) {
@@ -17,8 +17,7 @@ export function prepareConnection() {
       }
 
       // wait for new default connection
-      await createConnection({
-        // I strongly recommend using environment variables in a production environment for these
+      return await createConnection({
         type: "postgres",
         host: process.env.DB_HOST,
         database: process.env.DB_NAME,

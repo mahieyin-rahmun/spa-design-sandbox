@@ -1,3 +1,6 @@
+import { NextApiRequest } from "next";
+import { Connection } from "typeorm";
+
 export enum EInvoiceStatus {
   PAID,
   PENDING,
@@ -5,7 +8,7 @@ export enum EInvoiceStatus {
 }
 
 export interface IAddress {
-  id: string;
+  id: number;
   streetAddress: string;
   city: string;
   postalCode: string;
@@ -19,13 +22,13 @@ export enum EPaymentTerms {
 }
 
 export interface IProjectItem {
-  id: string;
+  id: number;
   name: string;
   quantity: number;
   unitPrice: number;
 }
 export interface IInvoice {
-  id: string;
+  id: number;
   clientName: string;
   clientEmail: string;
   invoiceDate: string;
@@ -46,4 +49,9 @@ export interface IInvoice {
 export interface IInvoicePreview
   extends Pick<IInvoice, "id" | "amount" | "clientName" | "status"> {
   dueDate: Date;
+}
+
+export interface IGraphqlContext {
+  req: NextApiRequest;
+  databaseConnection: Connection;
 }

@@ -7,7 +7,7 @@ import { IAddress } from "../../../types/server";
 export class Address extends BaseEntity implements IAddress {
   @PrimaryGeneratedColumn("rowid")
   @Field(() => ID)
-  id!: string;
+  id!: number;
 
   @Column()
   @Field()

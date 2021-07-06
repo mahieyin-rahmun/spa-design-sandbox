@@ -14,7 +14,7 @@ import { Invoice } from "./entities";
 export class ProjectItem extends BaseEntity implements IProjectItem {
   @PrimaryGeneratedColumn("rowid")
   @Field(() => ID)
-  id!: string;
+  id!: number;
 
   @Column()
   @Field()
@@ -29,7 +29,7 @@ export class ProjectItem extends BaseEntity implements IProjectItem {
   unitPrice!: number;
 
   @ManyToOne(() => Invoice, (invoice) => invoice.items, {
-    eager: true,
+    nullable: false,
   })
   @Field(() => Invoice)
   invoice!: Invoice;

@@ -17,12 +17,10 @@ const apolloServer = new ApolloServer({
   schema: await buildSchema({
     resolvers: [HelloResolver, InvoiceResolver],
   }),
-  context: async ({ req, res, connection }) => {
+  context: async ({ req }) => {
     let databaseConnection = await prepareConnection();
     return {
       req,
-      res,
-      connection,
       databaseConnection,
     };
   },

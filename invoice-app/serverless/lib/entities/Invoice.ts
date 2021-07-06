@@ -25,7 +25,7 @@ registerEnumType(EPaymentTerms, {
 export class Invoice extends BaseEntity implements IInvoice {
   @PrimaryGeneratedColumn("rowid")
   @Field(() => ID)
-  id!: string;
+  id!: number;
 
   @Column()
   @Field(() => Float)
@@ -59,15 +59,18 @@ export class Invoice extends BaseEntity implements IInvoice {
   @Field(() => EPaymentTerms)
   paymentTerm!: EPaymentTerms;
 
-  @ManyToOne(() => Address)
+  @ManyToOne(() => Address, { nullable: false, eager: true })
   @Field(() => Address)
   from!: Address;
 
-  @ManyToOne(() => Address)
+  @ManyToOne(() => Address, { nullable: false, eager: true })
   @Field(() => Address)
   to!: Address;
 
-  @OneToMany(() => ProjectItem, (projectItem) => projectItem.invoice)
+  @OneToMany(() => ProjectItem, (projectItem) => projectItem.invoice, {
+    eager: true,
+    cascade: true,
+  })
   @Field(() => [ProjectItem])
   items!: ProjectItem[];
 }
